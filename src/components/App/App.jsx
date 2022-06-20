@@ -10,7 +10,7 @@ const Reviews = lazy(() => import('../Reviews/Reviews'));
 
 export const App = () => {
   return (
-    <div>
+    <div className={s.container}>
       <nav>
         <NavLink
           className={({ isActive }) => (isActive ? s.active : s.link)}
