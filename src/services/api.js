@@ -41,18 +41,3 @@ const api = {
 export default api;
 
 
-// /trending/get-trending список самых популярных фильмов на сегодня для создания коллекции на главной странице.
-// https://api.themoviedb.org/3/  trending/all/day?api_key=<<api_key>>
-
-// /search/search - movies поиск кинофильма по ключевому слову на странице фильмов. query
-// https://api.themoviedb.org/3/  search/movie?api_key=<<api_key>>&language=en-US&page=1&include_adult=false
-
-// /movies/get-movie-details запрос полной информации о фильме для страницы кинофильма.
-// https://api.themoviedb.org/3/  movie/{movie_id}?api_key=<<api_key>>&language=en-US
-
-// /movies/get-movie-credits запрос информации о актёрском составе для страницы кинофильма.
-// https://api.themoviedb.org/3/  movie/{movie_id}/credits?api_key=<<api_key>>&language=en-US
-
-// /movies/get-movie-reviews запрос обзоров для страницы кинофильма.
-// https://api.themoviedb.org/3/  movie/{movie_id}/reviews?api_key=<<api_key>>&language=en-US&page=1
-

@@ -1,17 +1,33 @@
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import EditorList from '../EditorList/EditorList';
+import api from '../../services/api';
+import Loader from 'components/Loader/Loader';
 
-const HomePage = ({ films }) => {
+const HomePage = () => {
+  const [films, setFilms] = useState([]);
+  const [loading, setLoading] = useState(false);
+  
+    useEffect(() => {
+      const FetchTrendingFilms = async () => {
+           setLoading(true);
+            try {
+                const trendingFilms = await api.fetchTrending();
+                setFilms(trendingFilms);
+            } catch (error) {
+                console.log(error);
+            } finally {
+        setLoading(false);
+      }
+        }
+        FetchTrendingFilms();
+    }, [])
+  
   return (
     <main>
       <h1>Trending today</h1>
-      <ul>
-        {films.map(film => (
-          <li key={film.id}>
-            <Link to={`/movies/${film.id}`}>{film.title}</Link>
-          </li>
-        ))}
-      </ul>
-    </main>
+      {films && <EditorList films={films} />}
+      {loading && <Loader />}
+      </main>
   );
 };
 
