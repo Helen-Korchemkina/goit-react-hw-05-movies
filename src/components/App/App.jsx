@@ -4,7 +4,9 @@ import s from './App.module.css';
 
 const HomePage = lazy(() => import('../HomePage/HomePage'));
 const MoviesPage = lazy(() => import('../MoviesPage/MoviesPage'));
-const MovieDetailsPage = lazy(() => import('../MovieDetailsPage/MovieDetailsPage'));
+const MovieDetailsPage = lazy(() =>
+  import('../MovieDetailsPage/MovieDetailsPage')
+);
 const Cast = lazy(() => import('../Cast/Cast'));
 const Reviews = lazy(() => import('../Reviews/Reviews'));
 
@@ -24,20 +26,19 @@ export const App = () => {
         >
           Movies
         </NavLink>
-        <hr/>
+        <hr />
       </nav>
-      <Suspense fallback='loading'>
-      <Routes>
-        <Route path="/" element={<HomePage/>} />
-        <Route path="movies" element={<MoviesPage />}/>
-        <Route path="movies/:movieId" element={<MovieDetailsPage />}>
+      <Suspense fallback="loading">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="movies" element={<MoviesPage />} />
+          <Route path="movies/:movieId" element={<MovieDetailsPage />}>
             <Route path="cast" element={<Cast />} />
-            <Route path="reviews" element={<Reviews />} /> 
-           </Route>
-        <Route path="*" element={<Navigate to="/" />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
-        </Suspense>
+      </Suspense>
     </div>
   );
 };
-

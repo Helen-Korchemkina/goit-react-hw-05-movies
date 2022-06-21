@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import api from '../../services/api';
 import Loader from 'components/Loader/Loader';
-import {FcLeft} from "react-icons/fc";
+import { FcLeft } from 'react-icons/fc';
 import s from './MovieDetailsPage.module.css';
 
 const MovieDetailsPage = () => {
@@ -10,7 +10,7 @@ const MovieDetailsPage = () => {
   const [movieInfo, setMovieInfo] = useState(null);
   const [loading, setLoading] = useState(false);
   const location = useLocation();
-  
+
   useEffect(() => {
     const onDetalisMovie = async () => {
       setLoading(true);
@@ -28,11 +28,16 @@ const MovieDetailsPage = () => {
 
   return (
     <>
-      <Link to={location?.state?.from ?? '/movies'}><button type='button'><FcLeft/> Go back</button></Link>
-       {loading && <Loader />}
+      <Link to={location?.state?.from ?? '/movies'}>
+        <button type="button">
+          <FcLeft /> Go back
+        </button>
+      </Link>
+      {loading && <Loader />}
       {movieInfo && (
         <div className={s.movieDetalis}>
-          <img width="300px"
+          <img
+            width="300px"
             src={'https://image.tmdb.org/t/p/w500' + movieInfo.poster_path}
             alt={movieInfo.original_title}
           />
@@ -52,7 +57,7 @@ const MovieDetailsPage = () => {
           </div>
         </div>
       )}
-        <hr/>
+      <hr />
       <div>
         <h3>Additional information</h3>
         <ul>
@@ -63,7 +68,7 @@ const MovieDetailsPage = () => {
             <Link to="reviews">Reviews</Link>
           </li>
         </ul>
-          <hr/>
+        <hr />
         <Outlet />
       </div>
     </>
